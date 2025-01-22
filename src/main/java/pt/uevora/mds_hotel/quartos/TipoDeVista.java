@@ -1,7 +1,11 @@
 package pt.uevora.mds_hotel.quartos;
 
 public enum TipoDeVista {
-    BEIRA_MAR("Beira Mar");
+    BEIRA_MAR("Beira Mar"),
+    SERRA("Serra"),
+    CITADINA("Citadina"),
+    CAMPO("campo"),
+    ;
 
     private final String value;
     private TipoDeVista(String value) {
