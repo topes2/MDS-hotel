@@ -13,6 +13,12 @@ public class PedidoManutencao {
         this.pedidoID = ++AuxParaId;
         this.quartoID = quarto.getNumeroDoQuarto();
         this.manutencaoRequisitada = manutencaoRequisitada;
+
+        this.validarRequisitoDaManutencao(manutencaoRequisitada);
+    }
+
+    private void validarRequisitoDaManutencao(String manutencaoRequisitada) {
+        if(manutencaoRequisitada.length() == 0) throw new IllegalArgumentException("Erro: Um Pedido de manutencao deve ter pelo menos 1 caracter para fazer o pedido."); 
     }
 
     public int getNumQuarto() {
@@ -27,7 +33,8 @@ public class PedidoManutencao {
         return pedidoID;
     }
 
-    public void setManutencaoReq(int manutencaoRequisitada) {
-        setManutencaoReq(manutencaoRequisitada);
+    public void setManutencaoReq(String manutencaoRequisitada) {
+        this.validarRequisitoDaManutencao(manutencaoRequisitada);
+        this.manutencaoRequisitada = manutencaoRequisitada;
     }
 }
