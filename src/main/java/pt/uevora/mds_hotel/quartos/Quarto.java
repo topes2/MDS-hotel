@@ -12,7 +12,7 @@ public class Quarto {
     private boolean varanda;
 
     public Quarto(int capacidadeMaxPessoas, int numDeCamas, TipoDeVista tipoDeVista, boolean cozinha, int numCasasDeBanho, boolean varanda) {
-        this.numeroDoQuarto = curId++;
+        this.numeroDoQuarto = ++curId;
         this.capacidadeMaxPessoas = capacidadeMaxPessoas;
         this.numDeCamas = numDeCamas;
         this.tipoDeVista = tipoDeVista;
