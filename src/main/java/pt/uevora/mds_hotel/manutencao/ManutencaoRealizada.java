@@ -12,16 +12,23 @@ public class ManutencaoRealizada {
     private String manutencaoFeita;
 
     public ManutencaoRealizada(String manutencaoFeita, Quarto quarto, PedidoManutencao pedido) {
-        manutencaoRealizadoID = ++AuxParaId;
-        this.manutencaoRequisitada = pedido.getManutencaoReq();
-        this.quartoID = quarto.getNumeroDoQuarto();
-        this.manutencaoFeita = manutencaoFeita;
+        validarManutencaoDuplicadasDeUmUnicoPedido(pedido.getStatusPedido());
 
-        this.setManutencaoRealizada(manutencaoFeita);
+        this.manutencaoRealizadoID = ++AuxParaId;
+        this.quartoID = quarto.getNumeroDoQuarto();
+        this.manutencaoRequisitada = pedido.getManutencaoReq();
+        this.manutencaoFeita = manutencaoFeita;
+        pedido.setStatusPedido(true);
+
+        validarManutencaoRealizada(manutencaoFeita); 
     }
 
     private void validarManutencaoRealizada(String manutencaoFeita) {
         if(manutencaoFeita.length() == 0) throw new IllegalArgumentException("Erro: Uma manutencao realizada deve ter pelo menos 1 caracter para fazer o pedido."); 
+    }
+
+    private void validarManutencaoDuplicadasDeUmUnicoPedido(Boolean concluido) {
+        if(concluido) throw new IllegalArgumentException("Erro: Este pedido já foi realizado."); 
     }
 
     public String getPedidoDeManutencao(){
@@ -32,18 +39,16 @@ public class ManutencaoRealizada {
         return quartoID;
     }
 
-    public String getManutencaoRelizada(){
-        return manutencaoFeita;
-    }
-
     public int getIDManutencaoRealizada() {
         return manutencaoRealizadoID;
+    }
+
+    public String getManutencaoRelizada(){
+        return manutencaoFeita;
     }
 
     public void setManutencaoRealizada(String manutencaoFeita) {
         this.validarManutencaoRealizada(manutencaoFeita);
         this.manutencaoFeita = manutencaoFeita;
     }
-
-
 }

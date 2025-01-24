@@ -16,8 +16,8 @@ public class PedidoManutencaoTest {
     private static Quarto quartoDois;
     private static Quarto quartoTres;
 
-    private static PedidoManutencao manutencaoUm;
-    private static PedidoManutencao manutencaoDois;
+    private static PedidoManutencao pedidoManutencaoUm;
+    private static PedidoManutencao pedidoManutencaoDois;
 
     @BeforeAll
     public static void setUpBeforePedidosDeManutencaoTestes() {
@@ -25,13 +25,13 @@ public class PedidoManutencaoTest {
         quartoDois = new Quarto(32, 16, TipoDeVista.BEIRA_MAR, true, 10, false);
         quartoTres = new Quarto(32, 16, TipoDeVista.BEIRA_MAR, true, 10, false);
         
-        manutencaoUm = new PedidoManutencao("A luz da casa de banho não funciona", quartoTres);
-        manutencaoDois = new PedidoManutencao("A luz do quartoUm não funciona", quartoTres);
+        pedidoManutencaoUm = new PedidoManutencao("A luz da casa de banho não funciona", quartoTres);
+        pedidoManutencaoDois = new PedidoManutencao("A luz do quarto não funciona", quartoTres);
     }
 
     @Test
     public void testarOIDDoQuartoEscolhidoDeveSer3() {
-        assertEquals(3, manutencaoUm.getNumQuarto());
+        assertEquals(3, pedidoManutencaoUm.getNumQuarto());
     }
 
     @Test
@@ -49,7 +49,7 @@ public class PedidoManutencaoTest {
 
     @Test
     public void testarALeituraDoPedidoDeveEstarSemLuzNoQuarto() {
-        assertEquals("A luz do quartoUm não funciona", manutencaoDois.getManutencaoReq());
+        assertEquals("A luz do quartoUm não funciona", pedidoManutencaoDois.getManutencaoReq());
     }
 
     @Test
@@ -79,5 +79,23 @@ public class PedidoManutencaoTest {
     @Test
     public void testarUmPedidoDeManutencaoSemNenhumRequisito() throws IllegalArgumentException {
         assertThrows(IllegalArgumentException.class, () -> { new PedidoManutencao("", quartoDois); });
+    }
+
+    @Test
+    public void testarUmPedidoQueFoiCriadoSemSerRealizadoDeveTerComoStatusFalse() {
+        assertEquals(false, pedidoManutencaoUm.getStatusPedido());
+    }
+
+    @Test
+    public void testarUmaVariedadeDePedidosCriadosTodosElesDevemTerComoStatusFalse() {
+        Quarto variosQuartosIguais;
+        PedidoManutencao variosPedidosIguais;
+
+        for(int i = 0; i < 10000; i++){
+            variosQuartosIguais = new Quarto(30, 16, TipoDeVista.BEIRA_MAR, true, 10, false);
+            variosPedidosIguais = new PedidoManutencao("A agua da cozinha náo funciona", variosQuartosIguais);
+
+            assertEquals(false, variosPedidosIguais.getStatusPedido());
+        }
     }
 }
