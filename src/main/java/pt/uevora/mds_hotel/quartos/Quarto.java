@@ -56,4 +56,31 @@ public class Quarto {
     public boolean hasVaranda() {
         return varanda;
     }
+
+    public void setCapacidadeMaxPessoas(int capacidadeMaxPessoas) {
+        this.validarNumMaxPessoas(capacidadeMaxPessoas);
+        this.capacidadeMaxPessoas = capacidadeMaxPessoas;
+    }
+
+    public void setVaranda(boolean varanda) {
+        this.varanda = varanda;
+    }
+
+    public void setCozinha(boolean cozinha) {
+        this.cozinha = cozinha;
+    }
+
+    public void setNumCasasDeBanho(int numCasasDeBanho) {
+        this.validarNumCasasDeBanho(numCasasDeBanho);
+        this.numCasasDeBanho = numCasasDeBanho;
+    }
+
+    public void setNumDeCamas(int numDeCamas) {
+        this.validarNumDeCamas(numDeCamas);
+        this.numDeCamas = numDeCamas;
+    }
+
+    public void setTipoDeVista(TipoDeVista tipoDeVista) {
+        this.tipoDeVista = tipoDeVista;
+    }
 }
