@@ -1,6 +1,9 @@
 package pt.uevora.mds_hotel.quartos;
 
 public class Quarto {
+    private static int curId = 0;
+
+    private final int numeroDoQuarto;
     private int capacidadeMaxPessoas;
     private int numDeCamas;
     private TipoDeVista tipoDeVista;
@@ -9,6 +12,7 @@ public class Quarto {
     private boolean varanda;
 
     public Quarto(int capacidadeMaxPessoas, int numDeCamas, TipoDeVista tipoDeVista, boolean cozinha, int numCasasDeBanho, boolean varanda) {
+        this.numeroDoQuarto = curId++;
         this.capacidadeMaxPessoas = capacidadeMaxPessoas;
         this.numDeCamas = numDeCamas;
         this.tipoDeVista = tipoDeVista;
@@ -31,6 +35,10 @@ public class Quarto {
 
     private void validarNumCasasDeBanho(int numCasasDeBanho) {
         if (numCasasDeBanho < 0) throw new IllegalArgumentException("Erro: Um quarto tem de ter pelo menos uma casa de banho.");
+    }
+
+    public int getNumeroDoQuarto() {
+        return numeroDoQuarto;
     }
 
     public int getNumCasasDeBanho() {
