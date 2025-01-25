@@ -49,7 +49,7 @@ public class PedidoManutencaoTest {
 
     @Test
     public void testarALeituraDoPedidoDeveEstarSemLuzNoQuarto() {
-        assertEquals("A luz do quartoUm não funciona", pedidoManutencaoDois.getManutencaoReq());
+        assertEquals("A luz do quarto não funciona", pedidoManutencaoDois.getManutencaoReq());
     }
 
     @Test
@@ -96,6 +96,29 @@ public class PedidoManutencaoTest {
             variosPedidosIguais = new PedidoManutencao("A agua da cozinha náo funciona", variosQuartosIguais);
 
             assertEquals(false, variosPedidosIguais.getStatusPedido());
+        }
+    }
+
+    @Test
+    public void testarRemoverUmPedidoDaListaDePedidos() {
+        pedidoManutencaoDois.remPedidoReq();
+
+        assertEquals("Pedido Removido", pedidoManutencaoDois.getManutencaoReq());
+    }
+
+    @Test
+    public void testarUmaVariedadeDePedidosParaSeremRemovidos() {
+        Quarto variosQuartosIguais;
+        PedidoManutencao variosPedidosIguais;
+
+        for(int i = 0; i < 10000; i++){
+            variosQuartosIguais = new Quarto(30, 16, TipoDeVista.BEIRA_MAR, true, 10, false);
+            variosPedidosIguais = new PedidoManutencao("A agua da cozinha náo funciona", variosQuartosIguais);
+            assertEquals("A agua da cozinha náo funciona", variosPedidosIguais.getManutencaoReq());
+
+            variosPedidosIguais.remPedidoReq();
+
+            assertEquals("Pedido Removido", variosPedidosIguais.getManutencaoReq());
         }
     }
 }
