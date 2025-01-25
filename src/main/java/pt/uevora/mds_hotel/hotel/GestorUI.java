@@ -1,21 +1,12 @@
-package pt.uevora.mds_hotel;
+package pt.uevora.mds_hotel.hotel;
 
-import pt.uevora.mds_hotel.quartos.Quarto;
 import pt.uevora.mds_hotel.manutencao.PedidoManutencao;
-import pt.uevora.mds_hotel.manutencao.ManutencaoRealizada;
+import pt.uevora.mds_hotel.quartos.Quarto;
 
-import java.util.ArrayList;
-import java.util.List;
+public class GestorUI extends FuncionarioUI {
 
-public class GerirHotel {
-    private List<Quarto> listaDeQuartos;
-    private List<PedidoManutencao> listaDePedidosRequisitados;
-    private List<ManutencaoRealizada> listaDePedidosRealizados;
-
-    public GerirHotel() {
-        this.listaDeQuartos = new ArrayList<>();
-        this.listaDePedidosRequisitados = new ArrayList<>();
-        this.listaDePedidosRealizados = new ArrayList<>();
+    public GestorUI() {
+        super();
     }
 
     public void adicionarQuarto(Quarto quarto) {
@@ -54,9 +45,5 @@ public class GerirHotel {
         if (pedidoParaRemover != null) {
             listaDePedidosRequisitados.remove(pedidoParaRemover);
         }
-    }
-
-    public void adicionarRegistoDeManutencao(ManutencaoRealizada manutencaoRealizada) {
-        listaDePedidosRealizados.add(manutencaoRealizada);
     }
 }

@@ -24,11 +24,6 @@ public class PedidoManutencao {
         if(manutencaoRequisitada.trim().length() == 0) throw new IllegalArgumentException("Erro: Um Pedido de manutencao deve ter pelo menos 1 caracter para fazer o pedido."); 
     }
 
-    public void remPedidoReq() {
-        this.manutencaoRequisitada = "Pedido Removido";
-        this.concluido = true; // Desta forma é impossivel responder a este pedido, uma vez que para o responder a pedido estes precisam de ser falsos.
-    }
-
     public int getNumQuarto() {
         return quartoID;
     }
