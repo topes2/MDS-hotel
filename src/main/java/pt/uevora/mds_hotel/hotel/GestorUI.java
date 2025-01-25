@@ -1,22 +1,22 @@
 package pt.uevora.mds_hotel.hotel;
 
-import pt.uevora.mds_hotel.manutencao.PedidoManutencao;
+import java.util.List;
+
 import pt.uevora.mds_hotel.quartos.Quarto;
 
 public class GestorUI extends FuncionarioUI {
-
     public GestorUI() {
         super();
     }
 
     public void adicionarQuarto(Quarto quarto) {
-        listaDeQuartos.add(quarto);
+        Repositorio.adicionarQuarto(quarto);
     }
 
     public void removerQuarto(int numeroDoQuarto) {
         Quarto quartoParaRemover = null;
 
-        for (Quarto quarto : listaDeQuartos) {
+        for (Quarto quarto : Repositorio.obterQuartos()) {
             if (quarto.getNumeroDoQuarto() == numeroDoQuarto) {
                 quartoParaRemover = quarto;
                 break;
@@ -24,26 +24,8 @@ public class GestorUI extends FuncionarioUI {
         }
 
         if (quartoParaRemover != null) {
-            listaDeQuartos.remove(quartoParaRemover);
-        }
-    }
-
-    public void adicionarPedido(PedidoManutencao pedido) {
-        listaDePedidosRequisitados.add(pedido);
-    }
-
-    public void removerPedido(int pedidoID) {
-        PedidoManutencao pedidoParaRemover = null;
-
-        for (PedidoManutencao pedido : listaDePedidosRequisitados) {
-            if (pedido.getIDManutencaoReq() == pedidoID) {
-                pedidoParaRemover = pedido;
-                break;
-            }
-        }
-
-        if (pedidoParaRemover != null) {
-            listaDePedidosRequisitados.remove(pedidoParaRemover);
+            List<Quarto> quartos = Repositorio.obterQuartos();
+            quartos.remove(quartoParaRemover);
         }
     }
 }

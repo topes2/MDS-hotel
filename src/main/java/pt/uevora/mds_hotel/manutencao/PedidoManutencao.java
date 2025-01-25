@@ -48,4 +48,9 @@ public class PedidoManutencao {
         this.validarRequisitoDaManutencao(manutencaoRequisitada);
         this.manutencaoRequisitada = manutencaoRequisitada;
     }
+
+    @Override
+    public String toString() {
+        return manutencaoRequisitada; 
+    }
 }

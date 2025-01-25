@@ -51,4 +51,9 @@ public class ManutencaoRealizada {
         this.validarManutencaoRealizada(manutencaoFeita);
         this.manutencaoFeita = manutencaoFeita;
     }
+
+    @Override
+    public String toString() {
+        return manutencaoFeita; 
+    }
 }

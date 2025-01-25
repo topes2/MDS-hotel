@@ -16,8 +16,8 @@ public class HospedeUI {
         this.listaDePedidosRequisitados = new ArrayList<>();
     }
 
-    public void adicionarPedido(PedidoManutencao pedido) {
-        this.listaDePedidosRequisitados.add(pedido);
+    public List<Quarto> obterQuartos() {
+        return Repositorio.obterQuartos();
     }
 
     public List<Quarto> filtrarPesquisaQuartos(Integer capacidadeMaxPessoas, Integer numDeCamas, TipoDeVista tipoDeVista, Boolean cozinha, Integer numCasasDeBanho, Boolean varanda) {
@@ -38,4 +38,7 @@ public class HospedeUI {
     }
     
     
+    public void adicionarPedido(PedidoManutencao pedido) {
+        Repositorio.adicionarPedidoDeManutencao(pedido);
+    }    
 }
