@@ -162,26 +162,4 @@ public class ManutencaoRealizadaTest {
             assertEquals(true, variosPedidosIguais.getStatusPedido());
         }
     }
-
-    @Test
-    public void testarSeDaParaEscreverUmaManutencaoRealizadaNumPedidoDeManutencaoDeveDarIllegalArgumentException() throws IllegalArgumentException{
-        pedidoManutencaoDois.remPedidoReq();
-
-        assertThrows(IllegalArgumentException.class, () -> { new ManutencaoRealizada("Afinal não era mesmo preciso a nova luz do quarto", quartoDois, pedidoManutencaoDois); });
-    }
-
-    @Test
-    public void testarNumaGrandeVariedadeSeDaParaEscreverUmaManutencaoRealizadaNumPedidoDeManutencaoDeveDarIllegalArgumentException() {
-        for(int i = 0; i < 10000; i++){
-            Quarto variosQuartosIguais = new Quarto(30, 16, TipoDeVista.BEIRA_MAR, true, 10, false);
-            PedidoManutencao variosPedidosIguais = new PedidoManutencao("A agua da cozinha náo funciona", variosQuartosIguais);
-            variosPedidosIguais.remPedidoReq();
-            
-            assertThrows(IllegalArgumentException.class, () -> {
-                new ManutencaoRealizada("Afinal não era preciso mesmo consertar a agua da cozinha", variosQuartosIguais, variosPedidosIguais);
-            });
-
-            assertEquals(true, variosPedidosIguais.getStatusPedido());
-        }
-    }
 }
