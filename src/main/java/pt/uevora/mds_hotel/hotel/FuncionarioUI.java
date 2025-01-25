@@ -1,23 +1,19 @@
 package pt.uevora.mds_hotel.hotel;
 
+import java.util.List;
+
 import pt.uevora.mds_hotel.manutencao.ManutencaoRealizada;
 import pt.uevora.mds_hotel.manutencao.PedidoManutencao;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class FuncionarioUI extends HospedeUI {
-    protected List<ManutencaoRealizada> listaDePedidosRealizados;
-
     public FuncionarioUI() {
         super();
-        this.listaDePedidosRealizados = new ArrayList<>();
     }
 
     public void removerPedido(int pedidoID) {
         PedidoManutencao pedidoParaRemover = null;
 
-        for (PedidoManutencao pedido : listaDePedidosRequisitados) {
+        for (PedidoManutencao pedido : Repositorio.obterPedidosDeManutencao()) {
             if (pedido.getIDManutencaoReq() == pedidoID) {
                 pedidoParaRemover = pedido;
                 break;
@@ -25,11 +21,19 @@ public class FuncionarioUI extends HospedeUI {
         }
 
         if (pedidoParaRemover != null) {
-            listaDePedidosRequisitados.remove(pedidoParaRemover);
+            Repositorio.removerPedidoDeManutencao(pedidoParaRemover);
         }
     }
 
     public void adicionarRegistoDeManutencao(ManutencaoRealizada manutencaoRealizada) {
-        listaDePedidosRealizados.add(manutencaoRealizada);
+        Repositorio.adicionarManutencaoRealizada(manutencaoRealizada);
+    }
+
+    public List<PedidoManutencao> listarPedidosDeManutencao() {
+        return Repositorio.obterPedidosDeManutencao();
+    }
+
+    public List<ManutencaoRealizada> listarManutencaoRealizada() {
+        return Repositorio.obterManutencaoRealizada();
     }
 }

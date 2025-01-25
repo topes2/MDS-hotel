@@ -15,7 +15,11 @@ public class HospedeUI {
         this.listaDePedidosRequisitados = new ArrayList<>();
     }
 
-    public void adicionarPedido(PedidoManutencao pedido) {
-        this.listaDePedidosRequisitados.add(pedido);
+    public List<Quarto> obterQuartos() {
+        return Repositorio.obterQuartos();
     }
+
+    public void adicionarPedido(PedidoManutencao pedido) {
+        Repositorio.adicionarPedidoDeManutencao(pedido);
+    }    
 }
