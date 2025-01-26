@@ -2,11 +2,9 @@ package pt.uevora.mds_hotel.hotel;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.fail;
 
 import java.util.List;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -68,7 +66,6 @@ public class GestorUITest {
         List<Quarto> quartosDoHospede = gestorUm.obterQuartos(); 
         assertEquals(1000, quartosDoHospede.size());
     }
-
 
     @Test
     public void testarSeUmGestorPodeFazerUmPedidoDeManutencao() {
