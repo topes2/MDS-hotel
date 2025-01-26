@@ -42,4 +42,11 @@ public class HospedeUI {
     public void askPromocaoFuncionario(){
         repositorio.fazerUmPedidoDePromocao(this);
     }
+
+    @Override
+    public String toString() {
+        return "HospedeUI{" +
+                "repositorio=" + repositorio +
+                '}';
+    }
 }
