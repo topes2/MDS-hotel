@@ -6,7 +6,6 @@ import pt.uevora.mds_hotel.manutencao.ManutencaoRealizada;
 import pt.uevora.mds_hotel.manutencao.PedidoManutencao;
 
 public class FuncionarioUI extends HospedeUI {
-
     public FuncionarioUI(Repositorio repositorio) {
         super(repositorio);
     }

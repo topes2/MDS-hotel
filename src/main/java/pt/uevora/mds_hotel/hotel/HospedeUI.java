@@ -8,14 +8,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HospedeUI {
-    protected List<Quarto> listaDeQuartos;
-    protected List<PedidoManutencao> listaDePedidosRequisitados;
     protected Repositorio repositorio;
 
     public HospedeUI(Repositorio repositorio) {
         this.repositorio = repositorio;
-        this.listaDeQuartos = new ArrayList<>();
-        this.listaDePedidosRequisitados = new ArrayList<>();
     }
 
     public List<Quarto> obterQuartos() {
