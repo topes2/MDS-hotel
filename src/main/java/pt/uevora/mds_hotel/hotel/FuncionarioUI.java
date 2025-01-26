@@ -41,4 +41,8 @@ public class FuncionarioUI extends HospedeUI {
     public void adicionarAluguer(Aluguer aluguer) {
         repositorio.adicionarAluguer(aluguer);
     }
+
+    public List<Aluguer> listarAlugueres() {
+        return repositorio.obterAlugueres();
+    }
 }

@@ -64,4 +64,8 @@ public class Repositorio {
     void adicionarAluguer(Aluguer aluguer) {
         aluguers.add(aluguer);
     }
+
+    List<Aluguer> obterAlugueres() {
+        return aluguers;
+    }
 }

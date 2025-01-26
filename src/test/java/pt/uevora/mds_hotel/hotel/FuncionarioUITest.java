@@ -3,11 +3,13 @@ package pt.uevora.mds_hotel.hotel;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import pt.uevora.mds_hotel.aluguer.Aluguer;
 import pt.uevora.mds_hotel.manutencao.ManutencaoRealizada;
 import pt.uevora.mds_hotel.manutencao.PedidoManutencao;
 import pt.uevora.mds_hotel.quartos.Quarto;
@@ -114,5 +116,16 @@ public class FuncionarioUITest {
 
         List<ManutencaoRealizada> pedidos = funcionarioUm.listarManutencaoRealizada(); 
         assertEquals(1000, pedidos.size());
+    }
+
+    @Test
+    public void testarSeUmAluguerFoiAdicionadoAListaDeAlugueres() {
+        Aluguer a = new Aluguer(20, LocalDate.now(), 0, 0);
+
+        Repositorio newRep = new Repositorio();
+        FuncionarioUI f = new FuncionarioUI(newRep);
+        f.adicionarAluguer(a);
+
+
     }
 }
