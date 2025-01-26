@@ -159,7 +159,7 @@ public class FuncionarioUITest {
     }
 
     @Test
-    public void testarSeVariedadeDeCheckoutsNaoForamRealizadosMasAindaEstaoNaDataLimite() {
+    public void testarSeVariedadeDeCheckoutsNaoForamRealizados() {
         Repositorio newRep = new Repositorio();
         FuncionarioUI f = new FuncionarioUI(newRep);
 
@@ -173,7 +173,7 @@ public class FuncionarioUITest {
     }
 
     @Test
-    public void testarSeVariedadeDeCheckoutsNaoForamRealizadosEQueJaNaoEstaoNaDataLimite() {
+    public void testarSeVariedadeDeCheckoutsQueAindaNaoChegaramADataLimite() {
         Repositorio newRep = new Repositorio();
         FuncionarioUI f = new FuncionarioUI(newRep);
 
@@ -183,6 +183,6 @@ public class FuncionarioUITest {
         }
 
         List<Aluguer> checkoutsNaoRealizados = f.listarCheckoutsNaoRealizados(LocalDate.now().plusDays(2));
-        assertEquals(nAlugueres, checkoutsNaoRealizados.size());
+        assertEquals(0, checkoutsNaoRealizados.size());
     }
 }
