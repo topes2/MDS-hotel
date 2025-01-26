@@ -23,7 +23,7 @@ public class HospedeUI {
     public List<Quarto> filtrarPesquisaQuartos(Integer capacidadeMaxPessoas, Integer numDeCamas, TipoDeVista tipoDeVista, Boolean cozinha, Integer numCasasDeBanho, Boolean varanda) {
         List<Quarto> quartosEscolhidos = new ArrayList<>();
     
-        for (Quarto quarto : listaDeQuartos) {
+        for (Quarto quarto : Repositorio.obterQuartos()) {
             if (capacidadeMaxPessoas != null && quarto.getCapacidadeMaxPessoas() != capacidadeMaxPessoas) continue;
             if (numDeCamas != null && quarto.getNumDeCamas() != numDeCamas) continue;
             if (tipoDeVista != null && quarto.getTipoDeVista() != tipoDeVista) continue;
