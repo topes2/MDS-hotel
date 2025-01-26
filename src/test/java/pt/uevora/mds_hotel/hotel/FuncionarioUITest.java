@@ -120,6 +120,34 @@ public class FuncionarioUITest {
     }
 
     @Test
+    public void testarSeUmFuncionarioConsegueAceitarUmPedidoDePromocaoDeUmHospede() {
+        Repositorio newRep = new Repositorio();
+        HospedeUI hospede = new HospedeUI(newRep);
+        FuncionarioUI funcionario = new FuncionarioUI(newRep);
+
+        hospede.askPromocaoFuncionario();
+
+        funcionario.aceitarPedidoDePromocaoDeFuncionario(hospede);
+
+        assertEquals(2, funcionario.listarFuncionarios().size());
+    }
+
+    @Test
+    public void testarUmaVariedadedeHospedesFazeremTodosPedidosDePromocaoETodosSeremAceites () {
+        Repositorio newRep = new Repositorio();
+        HospedeUI hospede;
+        FuncionarioUI funcionario = new FuncionarioUI(newRep);;
+
+        for (int i = 0; i < 1000; i++) {
+            hospede = new HospedeUI(newRep);
+
+            hospede.askPromocaoFuncionario();
+            funcionario.aceitarPedidoDePromocaoDeFuncionario(hospede);
+        }
+
+        assertEquals(1001, funcionario.listarFuncionarios().size());
+    }
+    
     public void testarSeUmAluguerFoiAdicionadoAListaDeAlugueres() {
         Aluguer a = new Aluguer(20, LocalDate.now(), 0, 0);
 

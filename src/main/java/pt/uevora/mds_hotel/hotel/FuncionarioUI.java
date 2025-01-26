@@ -10,6 +10,7 @@ import pt.uevora.mds_hotel.manutencao.PedidoManutencao;
 public class FuncionarioUI extends HospedeUI {
     public FuncionarioUI(Repositorio repositorio) {
         super(repositorio);
+        repositorio.adicionarFuncionarioNoSistema(this);
     }
 
     public void removerPedido(int pedidoID) {
@@ -39,6 +40,26 @@ public class FuncionarioUI extends HospedeUI {
         return repositorio.obterManutencaoRealizada();
     }
 
+    public void rejeitarPedidoDePromocaoDeFuncionario(HospedeUI hospede) {
+        repositorio.removerUmPedidoDePromocao(hospede);
+    }
+
+    public FuncionarioUI aceitarPedidoDePromocaoDeFuncionario(HospedeUI hospede) {
+        repositorio.removerUmPedidoDePromocao(hospede);
+
+        FuncionarioUI funcionario = new FuncionarioUI(repositorio);
+
+        return funcionario;
+    }
+
+    public List<HospedeUI> listarPedidoDePromocaoDeFuncionario() {
+        return repositorio.listarPedidosDePromocao();
+    }
+
+    public List<FuncionarioUI> listarFuncionarios() {
+        return repositorio.listarFuncionariosNoSistema();
+    }
+
     public void adicionarAluguer(Aluguer aluguer) {
         repositorio.adicionarAluguer(aluguer);
     }
@@ -53,5 +74,12 @@ public class FuncionarioUI extends HospedeUI {
 
     public List<Aluguer> listarCheckoutsNaoRealizados() {
         return repositorio.obterCheckoutsNaoRealizados(LocalDate.now());
+    }
+
+    @Override
+    public String toString() {
+        return "FuncionarioUI{" +
+                "repositorio=" + repositorio +
+                '}';
     }
 }

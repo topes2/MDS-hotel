@@ -8,6 +8,8 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import pt.uevora.mds_hotel.manutencao.PedidoManutencao;
 import pt.uevora.mds_hotel.quartos.Quarto;
@@ -145,5 +147,42 @@ public class HospedeUITest {
 
         List<PedidoManutencao> pedidos = funcionario.listarPedidosDeManutencao(); 
         assertEquals(1000, pedidos.size());
+    }
+
+    @Test
+    public void testarSeUmHospedePodeFazerUmPedidoParaVirarFuncionario() {
+        Repositorio newRep = new Repositorio();
+        HospedeUI hospede = new HospedeUI(newRep);
+        FuncionarioUI funcionario = new FuncionarioUI(newRep);
+
+        hospede.askPromocaoFuncionario();
+
+        assertTrue(funcionario.listarPedidoDePromocaoDeFuncionario().contains(hospede));
+    }
+
+    @Test
+    public void testarUmaVariedadeDePedidosParaPromocaoDeFuncionarioPorParteDoHospede() {
+        Repositorio newRep = new Repositorio();
+        HospedeUI hospede;
+        FuncionarioUI funcionario = new FuncionarioUI(newRep);
+        List<HospedeUI> esperado = new ArrayList<>();
+
+        for(int i = 0; i < 1000; i++){
+            hospede = new HospedeUI(newRep);
+            hospede.askPromocaoFuncionario();
+            esperado.add(hospede);
+        }
+
+        assertEquals(funcionario.listarPedidoDePromocaoDeFuncionario(), esperado);
+    }
+
+    @Test
+    public void testarSeUmHospedePodeFazerVariosPedidosDePromocaoDeFuncionarioNaoDeve() throws IllegalStateException {
+        Repositorio newRep = new Repositorio();
+        HospedeUI hospede = new HospedeUI(newRep);
+
+        hospede.askPromocaoFuncionario();
+
+        assertThrows(IllegalStateException.class, () -> { hospede.askPromocaoFuncionario(); });
     }
 }

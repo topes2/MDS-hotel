@@ -10,7 +10,6 @@ import java.util.Set;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import pt.uevora.mds_hotel.hotel.Repositorio;
 import pt.uevora.mds_hotel.quartos.Quarto;
 import pt.uevora.mds_hotel.quartos.TipoDeVista;
 

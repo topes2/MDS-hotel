@@ -46,7 +46,7 @@ public class GestorUITest {
         gestorUm.adicionarQuarto(quartoUm);
         gestorDois.adicionarQuarto(quartoDois);
 
-        List<Quarto> quartosDoHospede = hospedeUm.obterQuartos(); 
+        List<Quarto> quartosDoHospede = hospedeUm.filtrarPesquisaQuartos(null, null, null, null, null, null); 
 
         assertEquals(2, quartosDoHospede.size());
         assertEquals(quartoUm, quartosDoHospede.get(0));
@@ -65,7 +65,7 @@ public class GestorUITest {
             }
         }
 
-        List<Quarto> quartosDoHospede = gestorUm.obterQuartos(); 
+        List<Quarto> quartosDoHospede = gestorUm.filtrarPesquisaQuartos(null, null, null, null, null, null); 
         assertEquals(1000, quartosDoHospede.size());
     }
 

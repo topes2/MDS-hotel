@@ -13,12 +13,16 @@ public class Repositorio {
     private List<Quarto> quartos;
     private List<PedidoManutencao> pedidosDeManutencao;
     private List<ManutencaoRealizada> manutencaoRealizada;
+    private List<HospedeUI> hospedes;
+    private List<FuncionarioUI> funcionarios;
     private List<Aluguer> aluguers;
 
     public Repositorio() {
         this.quartos = new ArrayList<>();
         this.pedidosDeManutencao = new ArrayList<>();
         this.manutencaoRealizada = new ArrayList<>();
+        this.hospedes = new ArrayList<>();
+        this.funcionarios = new ArrayList<>();
         this.aluguers = new ArrayList<>();
     }
 
@@ -61,6 +65,28 @@ public class Repositorio {
         return manutencaoRealizada;
     }
 
+    // --- Pedidos de Promoções
+    void fazerUmPedidoDePromocao(HospedeUI hospede) {
+        hospedes.add(hospede);
+    }
+
+    void removerUmPedidoDePromocao(HospedeUI hospede) {
+        hospedes.remove(hospede);
+    }
+
+    List<HospedeUI> listarPedidosDePromocao() {
+        return hospedes;
+    }
+
+    // --- Funcionario em serviço
+    void adicionarFuncionarioNoSistema(FuncionarioUI funcionario) {
+        funcionarios.add(funcionario);
+    }
+
+    List<FuncionarioUI> listarFuncionariosNoSistema() {
+        return funcionarios;
+    }
+    
     // --- Alugueres Realizadas
     void adicionarAluguer(Aluguer aluguer) {
         aluguers.add(aluguer);

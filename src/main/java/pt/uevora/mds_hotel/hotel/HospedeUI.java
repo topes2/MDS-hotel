@@ -15,8 +15,10 @@ public class HospedeUI {
         this.repositorio = repositorio;
     }
 
-    public List<Quarto> obterQuartos() {
-        return repositorio.obterQuartos();
+    public void validarPedidoDePromocaoAFuncionario(HospedeUI hospede) {
+        if(repositorio.listarPedidosDePromocao().contains(hospede)){
+            throw new IllegalStateException("Erro: O Hospede ja fez o pedido, e basta fazer somente uma vez"); 
+        }
     }
 
     public List<Quarto> filtrarPesquisaQuartos(Integer capacidadeMaxPessoas, Integer numDeCamas, TipoDeVista tipoDeVista, Boolean cozinha, Integer numCasasDeBanho, Boolean varanda) {
@@ -49,5 +51,17 @@ public class HospedeUI {
                 break;
             }
         }
+    }
+
+    public void askPromocaoFuncionario(){
+        validarPedidoDePromocaoAFuncionario(this);
+        repositorio.fazerUmPedidoDePromocao(this);
+    }
+
+    @Override
+    public String toString() {
+        return "HospedeUI{" +
+                "repositorio=" + repositorio +
+                '}';
     }
 }
