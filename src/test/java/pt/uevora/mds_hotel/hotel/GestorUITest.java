@@ -166,4 +166,16 @@ public class GestorUITest {
         assertEquals(41, q.getNumCasasDeBanho());
         assertTrue(q.hasVaranda());
     }
+
+    @Test
+    public void testarRemocaoDeUmQuarto() {
+        Repositorio newRep = new Repositorio();
+        GestorUI g = new GestorUI(newRep);
+        Quarto q = new Quarto(32, 16, TipoDeVista.BEIRA_MAR, true, 10, false);
+        g.adicionarQuarto(q);
+        g.removerQuarto(q.getNumeroDoQuarto());
+
+        List<Quarto> quartosDoHospede = gestorUm.filtrarPesquisaQuartos(null, null, null, null, null, null);
+        assertEquals(0, quartosDoHospede.size());
+    }
 }

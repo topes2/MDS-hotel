@@ -91,4 +91,13 @@ public class Quarto {
     public void setTipoDeVista(TipoDeVista tipoDeVista) {
         this.tipoDeVista = tipoDeVista;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || this.getClass() != o.getClass()) return false;
+
+        Quarto q = (Quarto) o;
+        return this.numeroDoQuarto == q.numeroDoQuarto;
+    }
 }
