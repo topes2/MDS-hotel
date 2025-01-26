@@ -8,6 +8,8 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import pt.uevora.mds_hotel.manutencao.PedidoManutencao;
 import pt.uevora.mds_hotel.quartos.Quarto;
@@ -155,6 +157,36 @@ public class HospedeUITest {
 
         hospede.askPromocaoFuncionario();
 
-        assertEquals(funcionario.listarPedidoDePromocaoDeFuncionario(), hospede);
+        assertTrue(funcionario.listarPedidoDePromocaoDeFuncionario().contains(hospede));
+    }
+
+    @Test
+    public void testarUmaVariedadeDePedidosParaPromocaoDeFuncionarioPorParteDoHospede() {
+        Repositorio newRep = new Repositorio();
+        HospedeUI hospede;
+        FuncionarioUI funcionario = new FuncionarioUI(newRep);
+        List<HospedeUI> esperado = new ArrayList<>();
+
+        for(int i = 0; i < 1000; i++){
+            hospede = new HospedeUI(newRep);
+            hospede.askPromocaoFuncionario();
+            esperado.add(hospede);
+        }
+
+        assertEquals(funcionario.listarPedidoDePromocaoDeFuncionario(), esperado);
+    }
+
+    @Test
+    public void testarSeUmHospedePodeFazerVariosPedidosDePromocaoDeFuncionario() {
+        Repositorio newRep = new Repositorio();
+        HospedeUI hospede = new HospedeUI(newRep);
+        List<HospedeUI> esperado = new ArrayList<>();
+
+        for(int i = 0; i < 2; i++){
+            hospede.askPromocaoFuncionario();
+            esperado.add(hospede);
+        }
+
+        fail();
     }
 }
