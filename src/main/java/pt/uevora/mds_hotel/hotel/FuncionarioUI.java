@@ -43,8 +43,12 @@ public class FuncionarioUI extends HospedeUI {
 
     public FuncionarioUI aceitarPedidoDePromocaoDeFuncionario(HospedeUI hospede) {
         repositorio.removerUmPedidoDePromocao(hospede);
-        
+
         FuncionarioUI funcionario = new FuncionarioUI(repositorio);
         return funcionario;
+    }
+
+    public List<HospedeUI> listarPedidoDePromocaoDeFuncionario(HospedeUI hospede) {
+        return repositorio.listarPedidosDePromocao();
     }
 }
