@@ -5,6 +5,7 @@ import pt.uevora.mds_hotel.manutencao.ManutencaoRealizada;
 import pt.uevora.mds_hotel.manutencao.PedidoManutencao;
 import pt.uevora.mds_hotel.quartos.Quarto;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -67,5 +68,16 @@ public class Repositorio {
 
     List<Aluguer> obterAlugueres() {
         return aluguers;
+    }
+
+    List<Aluguer> obterCheckoutsNaoRealizados(LocalDate targetDate) {
+        List<Aluguer> checkoutsNaoRealizados = new ArrayList<>();
+        for (Aluguer a : aluguers) {
+            if (a.getTempoDeAluguer().isAfter(targetDate)) {
+                checkoutsNaoRealizados.add(a);
+            }
+        }
+
+        return checkoutsNaoRealizados;
     }
 }
