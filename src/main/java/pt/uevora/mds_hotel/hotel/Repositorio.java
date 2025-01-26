@@ -19,41 +19,41 @@ public class Repositorio {
     }
 
     // --- Quartos
-    public void adicionarQuarto(Quarto quarto) {
+    void adicionarQuarto(Quarto quarto) {
         quartos.add(quarto);
     }
 
-    public void removerQuarto(Quarto quarto) {
+    void removerQuarto(Quarto quarto) {
         quartos.remove(quarto);
     }
 
-    public List<Quarto> obterQuartos() {
+    List<Quarto> obterQuartos() {
         return quartos;
     }
 
     // --- Pedidos
-    public void adicionarPedidoDeManutencao(PedidoManutencao pedido) {
+    void adicionarPedidoDeManutencao(PedidoManutencao pedido) {
         pedidosDeManutencao.add(pedido);
     }
 
-    public void removerPedidoDeManutencao(PedidoManutencao pedido) {
+    void removerPedidoDeManutencao(PedidoManutencao pedido) {
         pedidosDeManutencao.remove(pedido);
     }
 
-    public List<PedidoManutencao> obterPedidosDeManutencao() {
+    List<PedidoManutencao> obterPedidosDeManutencao() {
         return pedidosDeManutencao;
     }
 
     // --- Manutenções Realizadas
-    public void adicionarManutencaoRealizada(ManutencaoRealizada manutencao) {
+    void adicionarManutencaoRealizada(ManutencaoRealizada manutencao) {
         manutencaoRealizada.add(manutencao);
     }
 
-    public void removerManutencaoRealizada(ManutencaoRealizada manutencao) {
+    void removerManutencaoRealizada(ManutencaoRealizada manutencao) {
         manutencaoRealizada.remove(manutencao);
     }
 
-    public List<ManutencaoRealizada> obterManutencaoRealizada() {
+    List<ManutencaoRealizada> obterManutencaoRealizada() {
         return manutencaoRealizada;
     }
 }
