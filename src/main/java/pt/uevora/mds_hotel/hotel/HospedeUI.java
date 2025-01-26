@@ -35,8 +35,11 @@ public class HospedeUI {
         return quartosEscolhidos;
     }
     
-    
     public void adicionarPedido(PedidoManutencao pedido) {
         repositorio.adicionarPedidoDeManutencao(pedido);
-    }    
+    }
+
+    public void askPromocaoFuncionario(){
+        repositorio.fazerUmPedidoDePromocao(this);
+    }
 }

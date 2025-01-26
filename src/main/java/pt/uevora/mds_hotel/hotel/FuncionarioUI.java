@@ -36,4 +36,15 @@ public class FuncionarioUI extends HospedeUI {
     public List<ManutencaoRealizada> listarManutencaoRealizada() {
         return repositorio.obterManutencaoRealizada();
     }
+
+    public void rejeitarPedidoDePromocaoDeFuncionario(HospedeUI hospede) {
+        repositorio.removerUmPedidoDePromocao(hospede);
+    }
+
+    public FuncionarioUI aceitarPedidoDePromocaoDeFuncionario(HospedeUI hospede) {
+        repositorio.removerUmPedidoDePromocao(hospede);
+        
+        FuncionarioUI funcionario = new FuncionarioUI(repositorio);
+        return funcionario;
+    }
 }

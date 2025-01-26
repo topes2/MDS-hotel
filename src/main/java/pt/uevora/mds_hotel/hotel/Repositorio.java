@@ -11,6 +11,7 @@ public class Repositorio {
     private List<Quarto> quartos;
     private List<PedidoManutencao> pedidosDeManutencao;
     private List<ManutencaoRealizada> manutencaoRealizada;
+    private List<HospedeUI> hospedes;
 
     public Repositorio() {
         this.quartos = new ArrayList<>();
@@ -55,5 +56,18 @@ public class Repositorio {
 
     List<ManutencaoRealizada> obterManutencaoRealizada() {
         return manutencaoRealizada;
+    }
+
+    // --- Lista De Pedidos de Promoções
+    void fazerUmPedidoDePromocao(HospedeUI hospede) {
+        hospedes.add(hospede);
+    }
+
+    void removerUmPedidoDePromocao(HospedeUI hospede) {
+        hospedes.remove(hospede);
+    }
+
+    List<HospedeUI> listarPedidosDePromocao() {
+        return hospedes;
     }
 }
