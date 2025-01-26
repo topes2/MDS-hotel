@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -122,11 +123,13 @@ public class FuncionarioUITest {
         Repositorio newRep = new Repositorio();
         HospedeUI hospede = new HospedeUI(newRep);
         FuncionarioUI funcionario = new FuncionarioUI(newRep);
+        List<HospedeUI> esperado = new ArrayList<>();
 
         hospede.askPromocaoFuncionario();
 
         funcionario.aceitarPedidoDePromocaoDeFuncionario(hospede);
+        esperado.add(hospede);
 
-        // assertTrue();
+        assertEquals(funcionario.listarFuncionarios(), funcionario);
     }
 }

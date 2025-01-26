@@ -8,6 +8,7 @@ import pt.uevora.mds_hotel.manutencao.PedidoManutencao;
 public class FuncionarioUI extends HospedeUI {
     public FuncionarioUI(Repositorio repositorio) {
         super(repositorio);
+        repositorio.adicionarFuncionarioNoSistema(this);
     }
 
     public void removerPedido(int pedidoID) {
@@ -50,5 +51,9 @@ public class FuncionarioUI extends HospedeUI {
 
     public List<HospedeUI> listarPedidoDePromocaoDeFuncionario() {
         return repositorio.listarPedidosDePromocao();
+    }
+
+    public List<FuncionarioUI> listarFuncionarios() {
+        return repositorio.listarFuncionariosNoSistema();
     }
 }
