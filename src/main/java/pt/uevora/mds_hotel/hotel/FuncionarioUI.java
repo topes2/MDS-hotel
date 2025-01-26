@@ -2,6 +2,7 @@ package pt.uevora.mds_hotel.hotel;
 
 import java.util.List;
 
+import pt.uevora.mds_hotel.aluguer.Aluguer;
 import pt.uevora.mds_hotel.manutencao.ManutencaoRealizada;
 import pt.uevora.mds_hotel.manutencao.PedidoManutencao;
 
@@ -35,5 +36,9 @@ public class FuncionarioUI extends HospedeUI {
 
     public List<ManutencaoRealizada> listarManutencaoRealizada() {
         return repositorio.obterManutencaoRealizada();
+    }
+
+    public void adicionarAluguer(Aluguer aluguer) {
+        repositorio.adicionarAluguer(aluguer);
     }
 }
