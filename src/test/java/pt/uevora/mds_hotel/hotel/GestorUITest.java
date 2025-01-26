@@ -24,10 +24,11 @@ public class GestorUITest {
 
     @BeforeEach
     public void setUpBeforeGestorTestes() {
-        gestorUm = new GestorUI();
-        gestorDois = new GestorUI();
+        Repositorio newRep = new Repositorio();
+        gestorUm = new GestorUI(newRep);
+        gestorDois = new GestorUI(newRep);
 
-        hospedeUm = new HospedeUI();
+        hospedeUm = new HospedeUI(newRep);
         
         quartoUm = new Quarto(32, 16, TipoDeVista.BEIRA_MAR, true, 10, false);
         quartoDois = new Quarto(32, 16, TipoDeVista.BEIRA_MAR, true, 10, false);
@@ -35,7 +36,8 @@ public class GestorUITest {
 
     @Test
     public void testarSeConsegueCarregarAClasseGestorUI() {
-        GestorUI gestor = new GestorUI();
+        Repositorio newRep = new Repositorio();
+        GestorUI gestor = new GestorUI(newRep);
         assertNotNull(gestor);
     }
 

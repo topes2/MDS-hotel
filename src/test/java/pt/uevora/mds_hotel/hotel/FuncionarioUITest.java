@@ -20,14 +20,16 @@ public class FuncionarioUITest {
 
     @BeforeEach
     public void setUpBeforeGestorTestes() {
-        funcionarioUm = new FuncionarioUI();
+        Repositorio newRep = new Repositorio();
+        funcionarioUm = new FuncionarioUI(newRep);
 
         quartoUm = new Quarto(32, 16, TipoDeVista.BEIRA_MAR, true, 10, false);
     }
 
     @Test
     public void testarSeConsegueCarregarAClasseFuncionarioUI() {
-        FuncionarioUI funcionario = new FuncionarioUI();
+        Repositorio newRep = new Repositorio();
+        FuncionarioUI funcionario = new FuncionarioUI(newRep);
         assertNotNull(funcionario);
     }
 
@@ -46,13 +48,15 @@ public class FuncionarioUITest {
         Quarto quartoIgual; 
         PedidoManutencao pedidoManutencaoAtual;
 
+        Repositorio newRep = new Repositorio();
+        FuncionarioUI funcionarioUI = new FuncionarioUI(newRep);
         for (int i = 0; i < 1000; i++) {
             quartoIgual = new Quarto(10, 10, TipoDeVista.BEIRA_MAR, false, 10, false);
             pedidoManutencaoAtual = new PedidoManutencao("janela partiu-se", quartoIgual);
-            funcionarioUm.adicionarPedido(pedidoManutencaoAtual);
+            funcionarioUI.adicionarPedido(pedidoManutencaoAtual);
         }
 
-        List<PedidoManutencao> pedidos = funcionarioUm.listarPedidosDeManutencao(); 
+        List<PedidoManutencao> pedidos = funcionarioUI.listarPedidosDeManutencao();
         assertEquals(1000, pedidos.size());
     }
 
@@ -69,17 +73,16 @@ public class FuncionarioUITest {
 
     @Test
     public void testarUmaVariedadeDeOFuncionarioPodeEliminarUmPedidoDeManutencao() {
-        Quarto quartoIgual; 
-        PedidoManutencao pedidoManutencaoAtual;
-
+        Repositorio newRep = new Repositorio();
+        FuncionarioUI funcionarioUI = new FuncionarioUI(newRep);
         for (int i = 0; i < 1000; i++) {
-            quartoIgual = new Quarto(10, 10, TipoDeVista.BEIRA_MAR, false, 10, false);
-            pedidoManutencaoAtual = new PedidoManutencao("janela partiu-se", quartoIgual);
-            funcionarioUm.adicionarPedido(pedidoManutencaoAtual);
-            funcionarioUm.removerPedido(i+1);
+            Quarto quartoIgual = new Quarto(10, 10, TipoDeVista.BEIRA_MAR, false, 10, false);
+            PedidoManutencao pedidoManutencaoAtual = new PedidoManutencao("janela partiu-se", quartoIgual);
+            funcionarioUI.adicionarPedido(pedidoManutencaoAtual);
+            funcionarioUI.removerPedido(i+1);
         }
 
-        String pedidos = funcionarioUm.listarPedidosDeManutencao().toString();
+        String pedidos = funcionarioUI.listarPedidosDeManutencao().toString();
         assertEquals("[]", pedidos);
     }
 

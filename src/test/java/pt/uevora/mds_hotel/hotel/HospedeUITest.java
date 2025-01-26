@@ -23,9 +23,10 @@ public class HospedeUITest {
 
     @BeforeEach
     public void setUpBeforeTestesDeHospedes() {
-        hospedeUm = new HospedeUI();
+        Repositorio repositorio = new Repositorio();
+        hospedeUm = new HospedeUI(repositorio);
 
-        gestorUm = new GestorUI();
+        gestorUm = new GestorUI(repositorio);
 
         quartoUm = new Quarto(32, 16, TipoDeVista.BEIRA_MAR, true, 10, false);
         quartoDois = new Quarto(32, 16, TipoDeVista.BEIRA_MAR, true, 10, false);
@@ -33,7 +34,8 @@ public class HospedeUITest {
 
     @Test
     public void testarSeConsegueCarregarAClasseHospedeUI() {
-        HospedeUI hospede = new HospedeUI();
+        Repositorio newRep = new Repositorio();
+        HospedeUI hospede = new HospedeUI(newRep);
         assertNotNull(hospede);
     }
 
@@ -116,8 +118,9 @@ public class HospedeUITest {
 
     @Test
     public void testarSeUmHospedePodeFazerUmPedidoDeManutencao() {
+        Repositorio newRep = new Repositorio();
         PedidoManutencao pedidoManutencaoAtual = new PedidoManutencao("Troquei a lampada", quartoDois);
-        FuncionarioUI funcionario = new FuncionarioUI();
+        FuncionarioUI funcionario = new FuncionarioUI(newRep);
 
         hospedeUm.adicionarPedido(pedidoManutencaoAtual);
 
@@ -127,10 +130,11 @@ public class HospedeUITest {
 
     @Test
     public void testarUmaVariedadeDeOHospedePoderFazerPedidosDeManutencao() {
+        Repositorio newRep = new Repositorio();
         Quarto quartoIgual; 
         PedidoManutencao pedidoManutencaoAtual;
-        FuncionarioUI funcionario = new FuncionarioUI();
-        HospedeUI hospede = new HospedeUI();
+        FuncionarioUI funcionario = new FuncionarioUI(newRep);
+        HospedeUI hospede = new HospedeUI(newRep);
 
         for (int i = 0; i < 1000; i++) {
             quartoIgual = new Quarto(10, 10, TipoDeVista.BEIRA_MAR, false, 10, false);
