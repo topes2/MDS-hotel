@@ -1,7 +1,9 @@
 package pt.uevora.mds_hotel.hotel;
 
+import java.time.LocalDate;
 import java.util.List;
 
+import pt.uevora.mds_hotel.aluguer.Aluguer;
 import pt.uevora.mds_hotel.manutencao.ManutencaoRealizada;
 import pt.uevora.mds_hotel.manutencao.PedidoManutencao;
 
@@ -56,6 +58,22 @@ public class FuncionarioUI extends HospedeUI {
 
     public List<FuncionarioUI> listarFuncionarios() {
         return repositorio.listarFuncionariosNoSistema();
+    }
+
+    public void adicionarAluguer(Aluguer aluguer) {
+        repositorio.adicionarAluguer(aluguer);
+    }
+
+    public List<Aluguer> listarAlugueres() {
+        return repositorio.obterAlugueres();
+    }
+
+    public List<Aluguer> listarCheckoutsNaoRealizados(LocalDate targetDate) {
+        return repositorio.obterCheckoutsNaoRealizados(targetDate);
+    }
+
+    public List<Aluguer> listarCheckoutsNaoRealizados() {
+        return repositorio.obterCheckoutsNaoRealizados(LocalDate.now());
     }
 
     @Override
