@@ -9,6 +9,7 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import pt.uevora.mds_hotel.Hospede;
 import pt.uevora.mds_hotel.aluguer.Aluguer;
 import pt.uevora.mds_hotel.manutencao.ManutencaoRealizada;
 import pt.uevora.mds_hotel.manutencao.PedidoManutencao;
@@ -184,5 +185,19 @@ public class FuncionarioUITest {
 
         List<Aluguer> checkoutsNaoRealizados = f.listarCheckoutsNaoRealizados(LocalDate.now().plusDays(2));
         assertEquals(0, checkoutsNaoRealizados.size());
+    }
+
+    @Test
+    public void testarSeCheckoutFoiRealizadoComSucesso() {
+        Repositorio newRep = new Repositorio();
+        FuncionarioUI f = new FuncionarioUI(newRep);
+
+        Hospede h = new Hospede("Hospede", "email", "senha");
+        Quarto q = new Quarto(32, 16, TipoDeVista.BEIRA_MAR, true, 10, false);
+        Aluguer a = new Aluguer(20, LocalDate.now().plusDays(2), q.getNumeroDoQuarto(), h.getId());
+        f.adicionarAluguer(a);
+        f.realizarCheckout(h.getId(), q.getNumeroDoQuarto());
+
+        assertEquals(0, f.listarAlugueres().size());
     }
 }
