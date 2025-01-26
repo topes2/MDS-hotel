@@ -79,7 +79,7 @@ public class FuncionarioUITest {
             Quarto quartoIgual = new Quarto(10, 10, TipoDeVista.BEIRA_MAR, false, 10, false);
             PedidoManutencao pedidoManutencaoAtual = new PedidoManutencao("janela partiu-se", quartoIgual);
             funcionarioUI.adicionarPedido(pedidoManutencaoAtual);
-            funcionarioUI.removerPedido(i+1);
+            funcionarioUI.removerPedido(pedidoManutencaoAtual.getIDManutencaoReq());
         }
 
         String pedidos = funcionarioUI.listarPedidosDeManutencao().toString();

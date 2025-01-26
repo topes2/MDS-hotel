@@ -120,11 +120,12 @@ public class HospedeUITest {
     public void testarSeUmHospedePodeFazerUmPedidoDeManutencao() {
         Repositorio newRep = new Repositorio();
         PedidoManutencao pedidoManutencaoAtual = new PedidoManutencao("Troquei a lampada", quartoDois);
-        FuncionarioUI funcionario = new FuncionarioUI(newRep);
+        FuncionarioUI f = new FuncionarioUI(newRep);
+        HospedeUI h = new HospedeUI(newRep);
 
-        hospedeUm.adicionarPedido(pedidoManutencaoAtual);
+        h.adicionarPedido(pedidoManutencaoAtual);
 
-        String pedidos = funcionario.listarPedidosDeManutencao().toString();
+        String pedidos = f.listarPedidosDeManutencao().toString();
         assertEquals("[Troquei a lampada]", pedidos);
     }
 

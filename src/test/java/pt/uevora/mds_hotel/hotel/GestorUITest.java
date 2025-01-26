@@ -114,7 +114,7 @@ public class GestorUITest {
             quartoIgual = new Quarto(10, 10, TipoDeVista.BEIRA_MAR, false, 10, false);
             pedidoManutencaoAtual = new PedidoManutencao("janela partiu-se", quartoIgual);
             gestorDois.adicionarPedido(pedidoManutencaoAtual);
-            gestorUm.removerPedido(i+1);
+            gestorUm.removerPedido(pedidoManutencaoAtual.getIDManutencaoReq());
         }
 
         String pedidos = gestorUm.listarPedidosDeManutencao().toString();
