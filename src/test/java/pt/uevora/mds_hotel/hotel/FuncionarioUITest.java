@@ -130,6 +130,6 @@ public class FuncionarioUITest {
         funcionario.aceitarPedidoDePromocaoDeFuncionario(hospede);
         esperado.add(hospede);
 
-        assertEquals(funcionario.listarFuncionarios(), funcionario);
+        assertEquals(2, funcionario.listarFuncionarios().size());
     }
 }

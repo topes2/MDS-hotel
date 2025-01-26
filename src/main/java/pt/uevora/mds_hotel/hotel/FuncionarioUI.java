@@ -46,6 +46,7 @@ public class FuncionarioUI extends HospedeUI {
         repositorio.removerUmPedidoDePromocao(hospede);
 
         FuncionarioUI funcionario = new FuncionarioUI(repositorio);
+
         return funcionario;
     }
 
@@ -55,5 +56,12 @@ public class FuncionarioUI extends HospedeUI {
 
     public List<FuncionarioUI> listarFuncionarios() {
         return repositorio.listarFuncionariosNoSistema();
+    }
+
+    @Override
+    public String toString() {
+        return "FuncionarioUI{" +
+                "repositorio=" + repositorio +
+                '}';
     }
 }
