@@ -146,4 +146,15 @@ public class HospedeUITest {
         List<PedidoManutencao> pedidos = funcionario.listarPedidosDeManutencao(); 
         assertEquals(1000, pedidos.size());
     }
+
+    @Test
+    public void testarSeUmHospedePodeFazerUmPedidoParaVirarFuncionario() {
+        Repositorio newRep = new Repositorio();
+        HospedeUI hospede = new HospedeUI(newRep);
+        FuncionarioUI funcionario = new FuncionarioUI(newRep);
+
+        hospede.askPromocaoFuncionario();
+
+        assertEquals(funcionario.listarPedidoDePromocaoDeFuncionario(hospede), hospede);
+    }
 }
