@@ -157,4 +157,32 @@ public class FuncionarioUITest {
         f.adicionarAluguer(new Aluguer(90, LocalDate.now(), 11, 23));
         assertEquals(23, f.listarAlugueres().get(0).getHospedeId());
     }
+
+    @Test
+    public void testarSeVariedadeDeCheckoutsNaoForamRealizadosMasAindaEstaoNaDataLimite() {
+        Repositorio newRep = new Repositorio();
+        FuncionarioUI f = new FuncionarioUI(newRep);
+
+        final int nAlugueres = 10_000;
+        for (int i = 0; i < nAlugueres; i++) {
+            f.adicionarAluguer(new Aluguer(i, LocalDate.now().plusDays(1), i, i));
+        }
+
+        List<Aluguer> checkoutsNaoRealizados = f.listarCheckoutsNaoRealizados();
+        assertEquals(nAlugueres, checkoutsNaoRealizados.size());
+    }
+
+    @Test
+    public void testarSeVariedadeDeCheckoutsNaoForamRealizadosEQueJaNaoEstaoNaDataLimite() {
+        Repositorio newRep = new Repositorio();
+        FuncionarioUI f = new FuncionarioUI(newRep);
+
+        final int nAlugueres = 10_000;
+        for (int i = 0; i < nAlugueres; i++) {
+            f.adicionarAluguer(new Aluguer(i, LocalDate.now().plusDays(1), i, i));
+        }
+
+        List<Aluguer> checkoutsNaoRealizados = f.listarCheckoutsNaoRealizados(LocalDate.now().plusDays(2));
+        assertEquals(nAlugueres, checkoutsNaoRealizados.size());
+    }
 }
