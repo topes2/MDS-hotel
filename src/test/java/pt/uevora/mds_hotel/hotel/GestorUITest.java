@@ -1,8 +1,5 @@
 package pt.uevora.mds_hotel.hotel;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-
 import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -12,6 +9,8 @@ import pt.uevora.mds_hotel.manutencao.ManutencaoRealizada;
 import pt.uevora.mds_hotel.manutencao.PedidoManutencao;
 import pt.uevora.mds_hotel.quartos.Quarto;
 import pt.uevora.mds_hotel.quartos.TipoDeVista;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class GestorUITest {
     private GestorUI gestorUm;
@@ -149,5 +148,22 @@ public class GestorUITest {
 
         List<ManutencaoRealizada> pedidos = gestorUm.listarManutencaoRealizada(); 
         assertEquals(1000, pedidos.size());
+    }
+
+    @Test
+    public void testarEdicaoDeUmQuarto() {
+        Repositorio newRep = new Repositorio();
+        GestorUI g = new GestorUI(newRep);
+        Quarto q = new Quarto(32, 16, TipoDeVista.BEIRA_MAR, true, 10, false);
+        g.adicionarQuarto(q);
+        g.editarQuarto(q.getNumeroDoQuarto(),
+                4, 5, TipoDeVista.CITADINA, false, 41, true);
+
+        assertEquals(4, q.getCapacidadeMaxPessoas());
+        assertEquals(5, q.getNumDeCamas());
+        assertEquals(TipoDeVista.CITADINA, q.getTipoDeVista());
+        assertFalse(q.hasCozinha());
+        assertEquals(41, q.getNumCasasDeBanho());
+        assertTrue(q.hasVaranda());
     }
 }
