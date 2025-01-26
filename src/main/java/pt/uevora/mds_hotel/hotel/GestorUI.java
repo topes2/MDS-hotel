@@ -5,18 +5,18 @@ import java.util.List;
 import pt.uevora.mds_hotel.quartos.Quarto;
 
 public class GestorUI extends FuncionarioUI {
-    public GestorUI() {
-        super();
+    public GestorUI(Repositorio repositorio) {
+        super(repositorio);
     }
 
     public void adicionarQuarto(Quarto quarto) {
-        Repositorio.adicionarQuarto(quarto);
+        repositorio.adicionarQuarto(quarto);
     }
 
     public void removerQuarto(int numeroDoQuarto) {
         Quarto quartoParaRemover = null;
 
-        for (Quarto quarto : Repositorio.obterQuartos()) {
+        for (Quarto quarto : repositorio.obterQuartos()) {
             if (quarto.getNumeroDoQuarto() == numeroDoQuarto) {
                 quartoParaRemover = quarto;
                 break;
@@ -24,7 +24,7 @@ public class GestorUI extends FuncionarioUI {
         }
 
         if (quartoParaRemover != null) {
-            List<Quarto> quartos = Repositorio.obterQuartos();
+            List<Quarto> quartos = repositorio.obterQuartos();
             quartos.remove(quartoParaRemover);
         }
     }

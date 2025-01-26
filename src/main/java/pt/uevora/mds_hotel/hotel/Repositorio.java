@@ -8,46 +8,52 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Repositorio {
-    private static List<Quarto> quartos = new ArrayList<>();
-    private static List<PedidoManutencao> pedidosDeManutencao = new ArrayList<>();
-    private static List<ManutencaoRealizada> manutencaoRealizada = new ArrayList<>();
+    private List<Quarto> quartos;
+    private List<PedidoManutencao> pedidosDeManutencao;
+    private List<ManutencaoRealizada> manutencaoRealizada;
+
+    public Repositorio() {
+        this.quartos = new ArrayList<>();
+        this.pedidosDeManutencao = new ArrayList<>();
+        this.manutencaoRealizada = new ArrayList<>();
+    }
 
     // --- Quartos
-    public static void adicionarQuarto(Quarto quarto) {
+    public void adicionarQuarto(Quarto quarto) {
         quartos.add(quarto);
     }
 
-    public static void removerQuarto(Quarto quarto) {
+    public void removerQuarto(Quarto quarto) {
         quartos.remove(quarto);
     }
 
-    public static List<Quarto> obterQuartos() {
+    public List<Quarto> obterQuartos() {
         return quartos;
     }
 
     // --- Pedidos
-    public static void adicionarPedidoDeManutencao(PedidoManutencao pedido) {
+    public void adicionarPedidoDeManutencao(PedidoManutencao pedido) {
         pedidosDeManutencao.add(pedido);
     }
 
-    public static void removerPedidoDeManutencao(PedidoManutencao pedido) {
+    public void removerPedidoDeManutencao(PedidoManutencao pedido) {
         pedidosDeManutencao.remove(pedido);
     }
 
-    public static List<PedidoManutencao> obterPedidosDeManutencao() {
+    public List<PedidoManutencao> obterPedidosDeManutencao() {
         return pedidosDeManutencao;
     }
 
     // --- Manutenções Realizadas
-    public static void adicionarManutencaoRealizada(ManutencaoRealizada manutencao) {
+    public void adicionarManutencaoRealizada(ManutencaoRealizada manutencao) {
         manutencaoRealizada.add(manutencao);
     }
 
-    public static void removerManutencaoRealizada(ManutencaoRealizada manutencao) {
+    public void removerManutencaoRealizada(ManutencaoRealizada manutencao) {
         manutencaoRealizada.remove(manutencao);
     }
 
-    public static List<ManutencaoRealizada> obterManutencaoRealizada() {
+    public List<ManutencaoRealizada> obterManutencaoRealizada() {
         return manutencaoRealizada;
     }
 }
