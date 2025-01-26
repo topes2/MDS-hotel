@@ -2,6 +2,7 @@ package pt.uevora.mds_hotel.hotel;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
 
@@ -114,5 +115,18 @@ public class FuncionarioUITest {
 
         List<ManutencaoRealizada> pedidos = funcionarioUm.listarManutencaoRealizada(); 
         assertEquals(1000, pedidos.size());
+    }
+
+    @Test
+    public void testarSeUmFuncionarioConsegueAceitarUmPedidoDePromocaoDeUmHospede() {
+        Repositorio newRep = new Repositorio();
+        HospedeUI hospede = new HospedeUI(newRep);
+        FuncionarioUI funcionario = new FuncionarioUI(newRep);
+
+        hospede.askPromocaoFuncionario();
+
+        funcionario.aceitarPedidoDePromocaoDeFuncionario(hospede);
+
+        // assertTrue();
     }
 }

@@ -10,7 +10,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.fail;
 
 import pt.uevora.mds_hotel.manutencao.PedidoManutencao;
 import pt.uevora.mds_hotel.quartos.Quarto;
@@ -178,7 +177,7 @@ public class HospedeUITest {
     }
 
     @Test
-    public void testarSeUmHospedePodeFazerVariosPedidosDePromocaoDeFuncionario() throws IllegalStateException {
+    public void testarSeUmHospedePodeFazerVariosPedidosDePromocaoDeFuncionarioNaoDeve() throws IllegalStateException {
         Repositorio newRep = new Repositorio();
         HospedeUI hospede = new HospedeUI(newRep);
 
