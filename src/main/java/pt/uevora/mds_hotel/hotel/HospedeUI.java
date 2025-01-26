@@ -1,5 +1,6 @@
 package pt.uevora.mds_hotel.hotel;
 
+import pt.uevora.mds_hotel.aluguer.Aluguer;
 import pt.uevora.mds_hotel.manutencao.PedidoManutencao;
 import pt.uevora.mds_hotel.quartos.Quarto;
 import pt.uevora.mds_hotel.quartos.TipoDeVista;
@@ -35,8 +36,18 @@ public class HospedeUI {
         return quartosEscolhidos;
     }
     
-    
     public void adicionarPedido(PedidoManutencao pedido) {
         repositorio.adicionarPedidoDeManutencao(pedido);
-    }    
+    }
+
+    public void realizarCheckout(int hospedeId, int quartoId) {
+        List<Aluguer> alugueres = this.repositorio.obterAlugueres();
+        for (int i = alugueres.size() - 1; i >= 0; i--) {
+            Aluguer a = alugueres.get(i);
+            if (a.getHospedeId() == hospedeId && a.getQuartoId() == quartoId) {
+                alugueres.remove(i);
+                break;
+            }
+        }
+    }
 }
