@@ -155,6 +155,6 @@ public class HospedeUITest {
 
         hospede.askPromocaoFuncionario();
 
-        assertEquals(funcionario.listarPedidoDePromocaoDeFuncionario(hospede), hospede);
+        assertEquals(funcionario.listarPedidoDePromocaoDeFuncionario(), hospede);
     }
 }

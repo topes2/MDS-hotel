@@ -17,6 +17,7 @@ public class Repositorio {
         this.quartos = new ArrayList<>();
         this.pedidosDeManutencao = new ArrayList<>();
         this.manutencaoRealizada = new ArrayList<>();
+        this.hospedes = new ArrayList<>();
     }
 
     // --- Quartos
