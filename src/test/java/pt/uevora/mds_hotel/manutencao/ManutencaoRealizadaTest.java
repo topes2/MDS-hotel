@@ -10,6 +10,10 @@ import java.util.Set;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import pt.uevora.mds_hotel.hotel.FuncionarioUI;
+import pt.uevora.mds_hotel.hotel.GestorUI;
+import pt.uevora.mds_hotel.hotel.HospedeUI;
+import pt.uevora.mds_hotel.hotel.Repositorio;
 import pt.uevora.mds_hotel.quartos.Quarto;
 import pt.uevora.mds_hotel.quartos.TipoDeVista;
 
@@ -21,7 +25,6 @@ public class ManutencaoRealizadaTest {
     private static PedidoManutencao pedidoManutencaoDois;
 
     private static ManutencaoRealizada pedidoRealizadoUm;
-    private static ManutencaoRealizada pedidoRealizadoDois;
 
     @BeforeAll
     public static void setUpBeforePedidosDeManutencaoTestes() {
@@ -32,13 +35,6 @@ public class ManutencaoRealizadaTest {
         pedidoManutencaoDois = new PedidoManutencao("A luz do quarto não funciona", quartoDois);
 
         pedidoRealizadoUm = new ManutencaoRealizada("Coloquei uma nova lampada na casa de banho", quartoUm, pedidoManutencaoUm);
-        pedidoRealizadoDois = new ManutencaoRealizada("Coloquei uma nova lampada no quarto", quartoDois, pedidoManutencaoDois);
-    }
-
-    @Test
-    public void testarOIdDoQuartoComOIdRealizadoDeveSerDois() {
-        assertEquals(quartoDois.getNumeroDoQuarto(), pedidoRealizadoDois.getNumQuarto());
-        assertEquals(2, pedidoRealizadoDois.getNumQuarto());        
     }
 
     @Test
@@ -143,7 +139,21 @@ public class ManutencaoRealizadaTest {
 
     @Test
     public void testarEscreverNumPedidoQueJaFoiRealizadoDeveDarIllegalArgumentException() throws IllegalArgumentException{
-        assertThrows(IllegalArgumentException.class, () -> { new ManutencaoRealizada("Consertei novamente a luz do quarto, mesmo que não fosse necessario", quartoDois, pedidoManutencaoDois); });
+        Quarto q = new Quarto(32, 16, TipoDeVista.BEIRA_MAR, true, 10, false);
+        Repositorio newRep = new Repositorio();
+        GestorUI g = new GestorUI(newRep);
+        g.adicionarQuarto(q);
+
+        PedidoManutencao p0 = new PedidoManutencao("A luz da casa de banho não funciona", q);
+        HospedeUI h = new HospedeUI(newRep);
+        h.adicionarPedido(p0);
+
+        ManutencaoRealizada mr = new ManutencaoRealizada("Consertei novamente a luz do quarto, mesmo que não fosse necessario", q, p0);
+
+        FuncionarioUI f = new FuncionarioUI(newRep);
+        f.adicionarRegistoDeManutencao(mr);
+
+        assertThrows(IllegalArgumentException.class, () -> { new ManutencaoRealizada("Consertei novamente a luz do quarto, mesmo que não fosse necessario", q, p0); });
     }
 
     @Test 

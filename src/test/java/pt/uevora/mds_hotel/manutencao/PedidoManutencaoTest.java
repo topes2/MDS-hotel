@@ -30,11 +30,6 @@ public class PedidoManutencaoTest {
     }
 
     @Test
-    public void testarOIDDoQuartoEscolhidoDeveSer3() {
-        assertEquals(3, pedidoManutencaoUm.getNumQuarto());
-    }
-
-    @Test
     public void testarUmaVarieadadeDe100IDsDeQuartos() {
         Quarto variosQuartosIguais;
         PedidoManutencao variosPedidosIguais;

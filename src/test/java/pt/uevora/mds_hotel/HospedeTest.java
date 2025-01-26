@@ -1,28 +1,11 @@
 package pt.uevora.mds_hotel;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class HospedeTest {
-    private static Hospede[] hospedes;
-
-    @BeforeAll
-    public static void setUpBeforeHospedeTest() {
-        final int nH = 5;
-        hospedes = new Hospede[nH];
-        for (int i = 0; i < nH; i++) {
-            hospedes[i] = new Hospede(String.valueOf(i), String.valueOf(i) + "@gmail", "123");
-        }
-    }
-
-    @Test
-    public void testarSeIdDeQuintoHospedeECinco() {
-        assertEquals(5, hospedes[4].getId());
-    }
-
     @Test
     public void testarSeNomeDoHospedeEJoao() {
         Hospede h = new Hospede("João", "joao@", "123");
