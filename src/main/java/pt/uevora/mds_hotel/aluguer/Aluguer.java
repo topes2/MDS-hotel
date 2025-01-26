@@ -3,6 +3,8 @@ package pt.uevora.mds_hotel.aluguer;
 import java.time.LocalDate;
 
 public class Aluguer {
+    private static int alugIdGen = 0;
+    private int aluguerId;
     private int precoAluguer;
     private LocalDate tempoDeAluguer;
     private int quartoId, hospedeId;
@@ -13,6 +15,7 @@ public class Aluguer {
 
         this.setTempoDeAluguer(tempoDeAluguer);
         this.setPrecoAluguer(precoAluguer);
+        this.aluguerId = ++alugIdGen;
     }
 
     private void setTempoDeAluguer(LocalDate tempoDeAluguer) {
@@ -29,6 +32,10 @@ public class Aluguer {
         }
 
         this.precoAluguer = precoAluguer;
+    }
+
+    public int getAluguerId() {
+        return aluguerId;
     }
 
     public int getPrecoAluguer() {
