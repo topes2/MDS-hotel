@@ -20,10 +20,6 @@ public class HospedeUI {
         }
     }
 
-    public List<Quarto> obterQuartos() {
-        return repositorio.obterQuartos();
-    }
-
     public List<Quarto> filtrarPesquisaQuartos(Integer capacidadeMaxPessoas, Integer numDeCamas, TipoDeVista tipoDeVista, Boolean cozinha, Integer numCasasDeBanho, Boolean varanda) {
         List<Quarto> quartosEscolhidos = new ArrayList<>();
     
