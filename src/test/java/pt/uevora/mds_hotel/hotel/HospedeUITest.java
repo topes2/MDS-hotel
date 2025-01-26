@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 
@@ -177,16 +178,12 @@ public class HospedeUITest {
     }
 
     @Test
-    public void testarSeUmHospedePodeFazerVariosPedidosDePromocaoDeFuncionario() {
+    public void testarSeUmHospedePodeFazerVariosPedidosDePromocaoDeFuncionario() throws IllegalStateException {
         Repositorio newRep = new Repositorio();
         HospedeUI hospede = new HospedeUI(newRep);
-        List<HospedeUI> esperado = new ArrayList<>();
 
-        for(int i = 0; i < 2; i++){
-            hospede.askPromocaoFuncionario();
-            esperado.add(hospede);
-        }
+        hospede.askPromocaoFuncionario();
 
-        fail();
+        assertThrows(IllegalStateException.class, () -> { hospede.askPromocaoFuncionario(); });
     }
 }

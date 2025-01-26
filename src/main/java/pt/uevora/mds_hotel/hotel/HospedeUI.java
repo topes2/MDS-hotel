@@ -14,6 +14,12 @@ public class HospedeUI {
         this.repositorio = repositorio;
     }
 
+    public void validarPedidoDePromocaoAFuncionario(HospedeUI hospede) {
+        if(repositorio.listarPedidosDePromocao().contains(hospede)){
+            throw new IllegalStateException("Erro: O Hospede ja fez o pedido, e basta fazer somente uma vez"); 
+        }
+    }
+
     public List<Quarto> obterQuartos() {
         return repositorio.obterQuartos();
     }
@@ -40,6 +46,7 @@ public class HospedeUI {
     }
 
     public void askPromocaoFuncionario(){
+        validarPedidoDePromocaoAFuncionario(this);
         repositorio.fazerUmPedidoDePromocao(this);
     }
 
